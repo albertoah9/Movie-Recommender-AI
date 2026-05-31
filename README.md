@@ -1,9 +1,11 @@
 # Movie-Recommender-AI
+
 AI-powered movie recommendation system with content-based and collaborative filtering, built with Python and Streamlit.
 
 The project implements different recommendation techniques, including Content-Based Filtering and Collaborative Filtering, with the objective of generating personalized movie recommendations through an interactive web interface.
 
 ## Features of the project
+
 - Movie recommendation based on content similarity
 - Collaborative filtering using user ratings
 - Interactive graphical interface
@@ -12,6 +14,7 @@ The project implements different recommendation techniques, including Content-Ba
 - Web deployment using Streamlit
 
 ## Project objectives
+
 - Develop a Content-Based Recommendation System
 - Implement a collaborative Filtering Model
 - Build an Interactive User Interface
@@ -23,6 +26,7 @@ The project implements different recommendation techniques, including Content-Ba
 - Deploy the Application
 
 ## Technology Stack
+
 - Python
 - Pandas
 - NumPy
@@ -31,9 +35,11 @@ The project implements different recommendation techniques, including Content-Ba
 - Git & GitHub
 
 ## Dataset
+
 This project uses the MovieLens Latest Small dataset provided by GroupLens Research.
 
 ## Project Roadmap
+
 - [x] Phase 1: Project design and planning
 - [ ] Phase 2: Data collection and preprocessing
 - [ ] Phase 3: Content-based recommender
@@ -42,3 +48,23 @@ This project uses the MovieLens Latest Small dataset provided by GroupLens Resea
 - [ ] Phase 6: Integration and refinement
 - [ ] Phase 7: Documentation and portfolio preparation
 - [ ] Phase 8: Deployment
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/albertoah9/Movie-Recommender-AI.git
+```
+
+2. Navigate to the project directory
+
+```bash
+cd Movie-Recommender-AI
+```
+
+3. Install the dependencies
+
+```bash
+pip install -r requirements.txt
+```
