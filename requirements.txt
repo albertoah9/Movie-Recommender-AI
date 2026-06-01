@@ -4,6 +4,7 @@ scikit-learn
 streamlit
 matplotlib
 jupyter
+ipykernel
 seaborn
 plotly
 surprise

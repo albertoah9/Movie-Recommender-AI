@@ -68,3 +68,30 @@ cd Movie-Recommender-AI
 ```bash
 pip install -r requirements.txt
 ```
+
+## Development Environment
+
+Create a virtual environment:
+
+```bash
+python -m venv env
+```
+
+Activate it:
+
+```bash
+source env/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+(Optional) Register the Jupyter kernel:
+
+```bash
+python -m ipykernel install --user --name env --display-name "Python (env)"
+```
+
