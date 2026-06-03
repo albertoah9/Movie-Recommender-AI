@@ -26,7 +26,8 @@ Contains ratings provided by users
 | ------ | ----------- |
 | userId | Unique user identifier |
 | movieId | Movie identifier |
-| rating | Rating from 0.5 to 5.0 | 
+| rating | Rating from 0.5 to 5.0 |
+| timestamp | Unix timestamp of the rating |
 
 Example: 
 | userId | movieId | rating | timestamp |
