@@ -41,7 +41,7 @@ This project uses the MovieLens Latest Small dataset provided by GroupLens Resea
 ## Project Roadmap
 
 - [x] Phase 1: Project design and planning
-- [ ] Phase 2: Data collection and preprocessing
+- [x] Phase 2: Data collection and preprocessing
 - [ ] Phase 3: Content-based recommender
 - [ ] Phase 4: User interface development
 - [ ] Phase 5: Collaborative filtering

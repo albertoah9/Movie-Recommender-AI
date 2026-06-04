@@ -15,26 +15,17 @@ The goal of this project is to develop an AI-powered movie recommendation system
 - Create documentation
 
 ### Phase 2 – Data Collection and Preprocessing
-
 Status: In progress
 
 Tasks:
-
 - [x] Download MovieLens Latest Small dataset
-
 - [x] Store raw data in `data/raw/`
-
-- [ ] Explore movies and ratings datasets
-
+- [x] Explore movies and ratings datasets
 - [x] Check missing values and duplicates
-
 - [x] Extract movie year from title
-
 - [x] Clean movie titles
-
-- [ ] Convert timestamps to readable dates
-
-- [ ] Save cleaned datasets in `data/processed/`
+- [x] Convert timestamps to readable dates
+- [x] Save cleaned datasets in `data/processed/`
 
 ### Phase 3 – Content-Based Recommender
 
