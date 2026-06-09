@@ -34,6 +34,19 @@ Example:
 | ------ | ------- | ------ | --------- |
 | 1 | 1 | 4.0 | 964982703 |
 
+### tags.csv
+
+Contains user-generated tags assigned to movies.
+
+| Column | Description |
+|----------|-------------|
+| userId | Unique user identifier |
+| movieId | Movie identifier |
+| tag | User-generated tag |
+| timestamp | Unix timestamp of the tag |
+
+This file is used to enrich the content-based recommender with semantic metadata.
+
 ## Data Usage
 
 ### Content-Based Recommender

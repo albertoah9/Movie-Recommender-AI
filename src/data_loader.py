@@ -7,3 +7,7 @@ def load_movies(path: str) -> pd.DataFrame:
 def load_ratings(path:str) -> pd.DataFrame:
     """Load the ratings dataset from a CSV file"""
     return pd.read_csv(path)
+
+def load_tags(path:str) -> pd.DataFrame:
+    """Load the tags dataset from a CSV file"""
+    return pd.read_csv(path)
