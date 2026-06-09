@@ -56,5 +56,8 @@ The collaborative filtering model uses:
 to learn user preferences and generate personalized recommendations.
 
 ## Data Version
-Dataset: MovieLens Latest Small  
+Dataset: MovieLens Latest Small (movies.csv & ratings.csv)
 Downloaded on: 31/05/2026
+
+Dataset: MovieLens Latest Small (tags.csv)
+Downloaded on: 7/06/2026
