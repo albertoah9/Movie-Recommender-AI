@@ -8,3 +8,5 @@ ipykernel
 seaborn
 plotly
 surprise
+sentence-transformers
+torch
