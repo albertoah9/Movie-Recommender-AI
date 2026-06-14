@@ -36,7 +36,7 @@ def prepare_metadata_soup(
     movies = movies.copy()
     tags = tags.copy()
 
-    movies["decade"] = movies.apply(extract_decade)
+    movies["decade"] = movies["title"].apply(extract_decade)
 
     movies["genres_clean"] = (
         movies["genres"]
@@ -99,7 +99,7 @@ def calculate_weighted_rating(
     C = ratings["rating"].mean()
     m = rating_stats["v"].quantile(popularity_percentile)
 
-    rating_stats["weighed_rating"] = (
+    rating_stats["weighted_rating"] = (
         (rating_stats["v"] / (rating_stats["v"] + m)) * rating_stats["R"]
         + (m / (rating_stats["v"] + m)) * C
     )
@@ -168,7 +168,7 @@ def combine_similarity_matrices(
     Combine genre-based and semantic tag-based similarity matrices.
     """
 
-    if round(weight_genres + weight_genres, 5) != 1.0:
+    if round(weight_genres + weight_tags, 5) != 1.0:
         raise ValueError("weight_genres + weight_tags must be equal to 1.0")
 
     return (weight_genres * similarity_genres) + (weight_tags * similarity_tags)
@@ -225,7 +225,7 @@ def recommend_movies(
     """
     Recommend movies using combined content similarity and weighted rating quality
     Final score:
-    ((1 - peso_calidad) * content_similarity) + (peso_calidad * score_calidad)
+    ((1 - weight_quality) * content_similarity) + (weight_quality * quality_score)
     """
 
     if not 0 <= quality_weight <= 1:
@@ -257,7 +257,7 @@ def recommend_movies(
 
     results["final_score"] = (
         ((1 - quality_weight) * results["similarity_content"])
-        + (quality_weight * results["score_calidad"])
+        + (quality_weight * results["quality_score"])
     )
 
     results = results.drop(index=movie_index)
@@ -273,7 +273,7 @@ def recommend_movies(
         "genres",
         "decade",
         "similarity_content",
-        "score_calidad",
+        "quality_score",
         "final_score",
         "v",
         "R"
