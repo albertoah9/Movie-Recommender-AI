@@ -193,6 +193,8 @@ def build_content_based_model(
         popularity_percentile=popularity_percentile
     )
 
+    movies_model = movies_model.reset_index(drop=True)
+
     similarity_genres, genre_vectorizer = build_genre_similarity_matrix(movies_model)
 
     similarity_tags, semantic_model = build_semantic_tags_similarity_matrix(movies_model)
@@ -219,7 +221,7 @@ def recommend_movies(
     title: str,
     movies_model: pd.DataFrame,
     similarity_content,
-    top_n: int,
+    top_n: int = 10,
     quality_weight: float = 0.2
 ) -> pd.DataFrame:
     """
@@ -229,7 +231,13 @@ def recommend_movies(
     """
 
     if not 0 <= quality_weight <= 1:
-        raise ValueError("weight_quality must be between 0 and 1")
+        raise ValueError("quality_weight must be between 0 and 1")
+
+    required_columns = ["movieId", "title", "genres", "soup_genres", "soup_tags", "quality_score"]
+
+    missing_columns = [col for col in required_columns if col not in movies_model.columns]
+    if missing_columns:
+        raise ValueError(f"Missing required columns: {missing_columns}")
 
     title_matches = movies_model[
         movies_model["title"].str.lower() == title.lower()
