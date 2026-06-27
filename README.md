@@ -1,3 +1,5 @@
+https://huggingface.co/spaces/albertoalonsohernan/Movie-Recommender
+
 # Movie-Recommender-AI
 
 AI-powered movie recommendation system with content-based and collaborative filtering, built with Python and Streamlit.
@@ -95,3 +97,14 @@ pip install -r requirements.txt
 python -m ipykernel install --user --name env --display-name "Python (env)"
 ```
 
+## Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+## Live Demo
+
+Try the application online:
+
+https://huggingface.co/spaces/albertoalonsohernan/Movie-Recommender
