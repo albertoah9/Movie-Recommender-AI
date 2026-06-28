@@ -49,23 +49,6 @@ def main():
     movies_model = artifacts["movies_model"]
     similarity_content = artifacts["similarity_content"]
 
-    st.sidebar.header("Recommendation Settings")
-
-    top_n = st.sidebar.slider(
-        "Number of recommendations",
-        min_value=1,
-        max_value=10,
-        value=12
-    )
-
-    quality_weight = st.sidebar.slider(
-        "Quality weight",
-        min_value=0.0,
-        max_value=0.5,
-        value=0.2,
-        step=0.05
-    )
-
     movies_titles = movies_model["title"].tolist()
 
     selected_movie = st.selectbox(
@@ -78,11 +61,11 @@ def main():
             title=selected_movie,
             movies_model=movies_model,
             similarity_content=similarity_content,
-            top_n=top_n,
-            quality_weight=quality_weight
+            top_n=10,
+            quality_weight=0.2
         )
 
-        st.subheader(f"Recommendartions based on: {selected_movie}")
+        st.subheader(f"Recommendations based on: {selected_movie}")
 
         for _, row in recommendations.iterrows():
             with st.container():
