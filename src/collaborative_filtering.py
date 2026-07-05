@@ -1,4 +1,8 @@
 import pandas as pd
+import numpy as np
+
+from sklearn.decomposition import TruncatedSVD
+from sklearn.preprocessing import MinMaxScaler
 
 
 def create_user_item_matrix(ratings: pd.DataFrame):
@@ -27,4 +31,41 @@ def train_svd_model(
     n_components: int = 50,
     random_state: int = 42
 ):
+    svd = TruncatedSVD(
+        n_components=n_components,
+        random_state=random_state
+    )
+
+    user_factors = svd.fit_transform(normalied_matrix) # User represented by their latent tastes
+    item_factors = svd.components_ # Movies represented by their latent characteristics
+
+    return svd, user_factors, item_factors
+
+
+def predict_ratings(
+    user_factors,
+    item_factors,
+    user_means: pd.Series,
+    user_item_matrix: pd.DataFrame
+) -> pd.DataFrame:
+    predicted_normalized = np.dot(user_factors, item_factors)
+
+    predicted_ratings = predicted_normalized + user_means.values.reshape(-1, 1)
+
+    predicted_ratings_df = pd.DataFrame(
+        predicted_ratings,
+        index=user_item_matrix.index,
+        columns=user_item_matrix.columns
+    )
+
+    return predicted_ratings_df
+
+
+def recommend_movies_for_user(
+    user_id: int,
+    predicted_ratings: pd.DataFrame,
+    user_item_matrix: pd.DataFrame,
+    movies: pd.DataFrame,
+    top_n: int
+) -> pd.DataFrame:
     return
