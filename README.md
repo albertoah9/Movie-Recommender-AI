@@ -108,5 +108,3 @@ streamlit run app.py
 Try the application online:
 
 https://huggingface.co/spaces/albertoalonsohernan/Movie-Recommender
-
-![alt text](<Captura de pantalla 2026-06-28 a las 20.49.17.png>)

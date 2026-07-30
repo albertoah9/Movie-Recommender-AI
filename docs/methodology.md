@@ -48,3 +48,13 @@ The final recommendation score combines content similarity and quality:
 Final Score = ((1 - peso_calidad) * Content Similarity) + (peso_calidad * Quality Score)
 
 This approach balances similarity with movie quality and popularity.
+
+## Collaborative Filtering
+
+The collaborative filtering model recommends movies based on user rating patterns.
+
+A user-item matrix is created where rows represent users, columns represent movies, and values represent ratings. Since users rate movies differently, ratings are normalized by subtracting each user's average rating.
+
+The model uses Truncated SVD to learn latent user and movie factors from the rating matrix. These latent factors are used to reconstruct the matrix and estimate ratings for movies the user has not rated yet.
+
+Finally, the system recommends the movies with the highest predicted ratings, excluding movies already rated by the user.

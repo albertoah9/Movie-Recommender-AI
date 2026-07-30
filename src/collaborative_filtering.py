@@ -27,7 +27,7 @@ def normalize_user_rating(user_item_matrix: pd.DataFrame):
 
 
 def train_svd_model(
-    normalied_matrix: pd.DataFrame,
+    normalized_matrix: pd.DataFrame,
     n_components: int = 50,
     random_state: int = 42
 ):
@@ -36,7 +36,7 @@ def train_svd_model(
         random_state=random_state
     )
 
-    user_factors = svd.fit_transform(normalied_matrix) # User represented by their latent tastes
+    user_factors = svd.fit_transform(normalized_matrix) # User represented by their latent tastes
     item_factors = svd.components_ # Movies represented by their latent characteristics
 
     return svd, user_factors, item_factors
@@ -68,4 +68,26 @@ def recommend_movies_for_user(
     movies: pd.DataFrame,
     top_n: int
 ) -> pd.DataFrame:
-    return
+    if user_id not in predicted_ratings.index:
+        raise ValueError(f"User ID {user_id} not found")
+    
+    user_predictions = predicted_ratings.loc[user_id]
+
+    already_rated = user_item_matrix.loc[user_id].dropna().index
+
+    recommendations = user_predictions.drop(labels=already_rated)
+
+    recommendations = recommendations.sort_values(ascending=False).head(top_n)
+
+    recommendations = recommendations.reset_index()
+    recommendations.columns = ["movieId", "predicted_rating"]
+
+    recommendations = recommendations.merge(
+        movies[["movieId", "title", "genres"]],
+        on="movieId",
+        how="left"
+    )
+
+    return recommendations[["movieId", "title", "genres", "predicted_rating"]]
+
+
